@@ -1,12 +1,15 @@
 def analyzer(answer)
   guesses = []
-  count = 0
   (0..5).each do |a|
-    if a == 5
-      puts "You didnt guess it in enouph tries, you lose."
+    user_guess = gets.chomp.to_i
+    if a == 4
+      unless user_guess == answer
+        puts "You didnt guess it in enouph tries, you lose."
+      else
+        responder("win")
+      end
       return
     end
-    user_guess = gets.chomp.to_i
     if guesses.include?(user_guess)
       responder("same")
     elsif user_guess == answer
@@ -46,4 +49,3 @@ comp_num = rand (1..100)
 puts comp_num
 puts "I chose a number between 1 and 100, can you guess the number?"
 analyzer(comp_num)
-puts "hi"
