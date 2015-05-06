@@ -40,7 +40,7 @@ end
 
 def responder(type, level = 1)
   if type == "same"
-    puts "You said that already. TEEHEE I remembered what you guessed and u didnt. Guess again"
+    puts "You said that already. TEEHEE I remembered what you guessed and u didnt, guess again"
   end
   if (type == "high") && (level == 2)
     puts "You really guessed higher after I said you were high?"
@@ -83,5 +83,6 @@ end
 
 comp_num = rand (1..100)
 #puts comp_num
+# needs to develop a new random number generater
 puts "I chose a number between 1 and 100, can you guess the number?"
 analyzer(comp_num)
