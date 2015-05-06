@@ -18,15 +18,13 @@ def analyzer(answer)
       responder("win")
       return
     else
-      level = calculater(user_guess, answer)
       responder(calculater(user_guess, answer))
     end
-    if (a > 0) && (user_guess < last_guess) && (level == "low")
-      puts "Wow did you really guess a lower number after being told you were low? what a waste, guess again."
+    if ((a > 0) && (user_guess < last_guess) && (level == "low")) ||
+       ((a > 0) && (user_guess > last_guess) && (level == "high"))
+       responder(level, 2)
     end
-    if (a > 0) && (user_guess > last_guess) && (level == "high")
-      "Wow did you really guess a higher number after being told you were high what a waste, guess again."
-    end
+    level = calculater(user_guess, answer)
     last_guess = user_guess
     guesses << user_guess
   end
@@ -40,9 +38,15 @@ def calculater(guess, answer)
   end
 end
 
-def responder(type)
+def responder(type, level = 1)
   if type == "same"
     puts "You said that already. TEEHEE I remembered what you guessed and u didnt. Guess again"
+  end
+  if (type == "high") && (level == 2)
+    puts "You really guessed higher after I said you were high?"
+  end
+  if (type == "low") && (level == 2)
+    puts "You really guessed lower after I said you were low?"
   end
   if type == "high"
     puts "Your too high, guess again"
