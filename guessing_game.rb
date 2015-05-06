@@ -46,6 +46,5 @@ def responder(type)
 end
 
 comp_num = rand (1..100)
-puts comp_num
 puts "I chose a number between 1 and 100, can you guess the number?"
 analyzer(comp_num)
